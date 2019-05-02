@@ -1,7 +1,6 @@
 'use strict';
 
 //elements to use
-const options = document.querySelector('.options-list');
 const option1 = document.querySelector('#option1');
 const option2 = document.querySelector('#option2');
 const option3 = document.querySelector('#option3');
@@ -47,20 +46,39 @@ const printCards = number => {
     });
 };
 
-//function to create the correct number of cards
+const checkSavedNumber = () => {
+  const savedNumber = localStorage.getItem('NumberOfCards');
+  if (savedNumber) {
+    printCards(savedNumber);
+  }
+  else {
+    console.log('No saved number');
+  }
+};
+
+//function to save the data
+const saveNumber = number => {
+  localStorage.setItem('NumberOfCards', number);
+};
+
+//function to create the correct number of cards and save the value
 const getCards = () => {
   if (option1.checked === true) {
     printCards(4);
+    saveNumber(4);
   }
   else if (option2.checked === true) {
     printCards(6);
+    saveNumber(6);
   }
   else if (option3.checked === true) {
     printCards(8);
+    saveNumber(8);
   }
   else {
     console.log('No number chosen');
   }
 };
 
+checkSavedNumber();
 button.addEventListener('click', getCards);
