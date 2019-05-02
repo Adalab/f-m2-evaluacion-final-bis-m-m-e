@@ -10,6 +10,22 @@ const apiUrl = 'https://raw.githubusercontent.com/Adalab/cards-data/master/';
 const adalabImage = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
 
 
+//function to flip cards when clicked
+const flipCards = event => {
+  const front = event.currentTarget.childNodes[0];
+  const back = event.currentTarget.childNodes[1];
+
+  front.classList.toggle('hidden');
+  back.classList.toggle('hidden');
+};
+
+const addCardListener = () => {
+  const cards = document.querySelectorAll('.card');
+  for (const card of cards) {
+    card.addEventListener('click', flipCards);
+  }
+};
+
 //function to print cards
 const printCards = number => {
   resultsBox.innerHTML = '';
@@ -43,6 +59,7 @@ const printCards = number => {
         newCardList.appendChild(newCard);
       }
       resultsBox.appendChild(newCardList);
+      addCardListener();
     });
 };
 
