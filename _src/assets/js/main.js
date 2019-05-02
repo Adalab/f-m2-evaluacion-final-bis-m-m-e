@@ -24,12 +24,12 @@ const printCards = number => {
         const img = data[i].image;
         const alt = data[i].name;
         const id = data[i].pair;
-        console.log(id);
         const newCard = document.createElement('li');
         newCard.classList.add('card');
 
         const newImage1 = document.createElement('img');
         newImage1.classList.add('front-image');
+        newImage1.classList.add('hidden');
         newImage1.setAttribute('id', id);
         newImage1.setAttribute('src', img);
         newImage1.setAttribute('alt', alt);
