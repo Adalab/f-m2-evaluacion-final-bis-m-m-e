@@ -50,6 +50,13 @@ const checkSavedNumber = () => {
   const savedNumber = localStorage.getItem('NumberOfCards');
   if (savedNumber) {
     printCards(savedNumber);
+    if (savedNumber === '4') {
+      option1.checked = true;
+    } else if (savedNumber === '6') {
+      option2.checked = true;
+    } else {
+      option3.checked = true;
+    }
   }
   else {
     console.log('No saved number');
