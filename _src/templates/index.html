@@ -1,15 +1,45 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Adalab Web Starter Kit</title>
-  <link rel="icon" href="favicon.png"/>
+	<title>Pokémon pairs!</title>
+  <!-- <link rel="icon" href=""/> -->
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <div class="page">
-    <partial src="_header.html" label="Header"></partial>
-    <partial src="_main.html" label="Main"></partial>
-  </div>
+  <main class="page">
+    <h1 class="title">Pokémon pairs</h1>
+    <h2 class="subtitle">Choose the number of pairs below... and have fun!</h2>
+
+    <div class="form">
+      <ul class="options-list">
+        <li class="list__item">
+          <label for="option1">
+            <input type="radio" id="option1" name="number-options">
+            4
+          </label>
+        </li>
+
+        <li class="list__item">
+          <label for="option2">
+            <input type="radio" id="option2" name="number-options">
+            6
+          </label>
+        </li>
+
+        <li class="list__item">
+          <label for="option3">
+            <input type="radio" id="option3" name="number-options">
+            8
+          </label>
+        </li>
+      </ul>
+      <button type="button" class="btn">Click here to start</button>
+    </div>
+
+    <div class="results"></div>
+
+  </main>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
