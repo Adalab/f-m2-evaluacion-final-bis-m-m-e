@@ -12,18 +12,25 @@ let acc = 0;
 let cardToCompare;
 
 //function to compare cards when flipped
-const compareCards = card => {
-  const idToCompare = cardToCompare.childNodes[0].id;
-  if (idToCompare === card.id) {
+const compareCards = (frontOfCard, backOfCard) => {
+  const frontToCompare = cardToCompare.childNodes[0];
+  const backToCompare = cardToCompare.childNodes[1];
+  if (frontToCompare.id === frontOfCard.id) {
     console.log(`It's a match!`);
+    acc = 0;
+    cardToCompare = '';
+    return acc;
   } else {
     console.log(`It's not a match :(`);
-    cardToCompare.classList.add('hidden');
-    card.parentElement.classList.add('hidden');
+    frontToCompare.classList.toggle('hidden');
+    backToCompare.classList.toggle('hidden');
+    frontOfCard.classList.toggle('hidden');
+    backOfCard.classList.toggle('hidden');
+
+    acc = 0;
+    cardToCompare = '';
+    return acc;
   }
-  acc = 0;
-  cardToCompare = '';
-  return acc;
 };
 
 //function to flip cards when clicked
@@ -33,12 +40,13 @@ const flipCards = event => {
 
   front.classList.toggle('hidden');
   back.classList.toggle('hidden');
+  console.log(acc);
   if (acc === 0) {
     cardToCompare = event.currentTarget;
     acc++;
     return acc;
   } else if (acc === 1) {
-    compareCards(front);
+    compareCards(front, back);
     acc++;
     return acc;
   }
