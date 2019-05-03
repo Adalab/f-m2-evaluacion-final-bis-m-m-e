@@ -2,9 +2,13 @@
 
 $font-main: 'Wendy One', sans-serif;
 
-body {
+.body {
   margin: 0;
   background: palegoldenrod;
+}
+
+.background-winner {
+  background: palevioletred;
 }
 
 .page {
@@ -66,4 +70,24 @@ body {
 .front-image {
   height: 195px;
   width: 160px;
+}
+
+.secret-btn {
+  font-family: $font-main;
+  border-radius: 5px;
+  background: lightpink;
+  height: 50px;
+  width: 100px;
+}
+
+.transparent {
+  opacity: 0.5;
+}
+
+.messages {
+  height: 50px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

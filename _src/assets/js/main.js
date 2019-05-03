@@ -7,11 +7,23 @@ const option3 = document.querySelector('#option3');
 const button = document.querySelector('.btn');
 const resultsBox = document.querySelector('.results');
 const messagesBox = document.querySelector('.messages');
+const secretButton = document.querySelector('.secret-btn');
 const apiUrl = 'https://raw.githubusercontent.com/Adalab/cards-data/master/';
 const adalabImage = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
 let acc = 0;
 let cardToCompare;
 const pairsFound = [];
+
+//function to reset the game
+const resetGame = () => {
+  acc = 0;
+  cardToCompare = '';
+  pairsFound.length = 0;
+  resultsBox.innerHTML = '';
+  messagesBox.innerHTML = '';
+  secretButton.classList.add('hidden');
+  messagesBox.classList.remove('background-winner');
+};
 
 //function to hide cards again when flipped
 const hideCards = (front, back, front2, back2) => {
@@ -35,11 +47,14 @@ const compareCards = (frontOfCard, backOfCard) => {
       pairsFound.push(frontOfCard);
       return acc;
     } else {
-      messagesBox.innerHTML = `You win!`;
+      messagesBox.innerHTML = `You win! Do you want to play again?`;
+      secretButton.classList.remove('hidden');
+      resultsBox.classList.add('transparent');
+      messagesBox.classList.add('background-winner');
     }
   } else {
     messagesBox.innerHTML = `Not a match :( Try again!`;
-    setTimeout(function(){hideCards(frontToCompare, backToCompare, frontOfCard, backOfCard)}, 2000);
+    setTimeout(function(){hideCards(frontToCompare, backToCompare, frontOfCard, backOfCard)}, 1000);
     acc = 0;
     cardToCompare = '';
     return acc;
@@ -150,3 +165,4 @@ const getCards = () => {
 
 checkSavedNumber();
 button.addEventListener('click', getCards);
+secretButton.addEventListener('click', resetGame);
