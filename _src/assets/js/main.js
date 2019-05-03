@@ -22,6 +22,7 @@ const resetGame = () => {
   resultsBox.innerHTML = '';
   messagesBox.innerHTML = '';
   secretButton.classList.add('hidden');
+  resultsBox.classList.remove('transparent');
   messagesBox.classList.remove('background-winner');
 };
 
