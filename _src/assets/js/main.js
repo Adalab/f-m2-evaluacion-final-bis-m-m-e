@@ -8,7 +8,23 @@ const button = document.querySelector('.btn');
 const resultsBox = document.querySelector('.results');
 const apiUrl = 'https://raw.githubusercontent.com/Adalab/cards-data/master/';
 const adalabImage = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
+let acc = 0;
+let cardToCompare;
 
+//function to compare cards when flipped
+const compareCards = card => {
+  const idToCompare = cardToCompare.childNodes[0].id;
+  if (idToCompare === card.id) {
+    console.log(`It's a match!`);
+  } else {
+    console.log(`It's not a match :(`);
+    cardToCompare.classList.add('hidden');
+    card.parentElement.classList.add('hidden');
+  }
+  acc = 0;
+  cardToCompare = '';
+  return acc;
+};
 
 //function to flip cards when clicked
 const flipCards = event => {
@@ -17,6 +33,16 @@ const flipCards = event => {
 
   front.classList.toggle('hidden');
   back.classList.toggle('hidden');
+  if (acc === 0) {
+    cardToCompare = event.currentTarget;
+    acc++;
+    return acc;
+  } else if (acc === 1) {
+    compareCards(front);
+    acc++;
+    return acc;
+  }
+
 };
 
 const addCardListener = () => {
