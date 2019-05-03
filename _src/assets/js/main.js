@@ -44,13 +44,11 @@ const flipCards = event => {
 
   front.classList.toggle('hidden');
   back.classList.toggle('hidden');
-  console.log(acc);
   if (acc === 0) {
     cardToCompare = event.currentTarget;
     acc++;
     return acc;
   } else if (acc === 1) {
-    console.log('comparing cards');
     compareCards(front, back);
   }
 
