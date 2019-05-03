@@ -46,9 +46,8 @@ const flipCards = event => {
     acc++;
     return acc;
   } else if (acc === 1) {
+    console.log('comparing cards');
     compareCards(front, back);
-    acc++;
-    return acc;
   }
 
 };
