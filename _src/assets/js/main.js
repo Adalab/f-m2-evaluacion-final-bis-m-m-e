@@ -78,14 +78,13 @@ const printCards = number => {
         newCard.classList.add('card');
 
         const newImage1 = document.createElement('img');
-        newImage1.classList.add('front-image');
-        newImage1.classList.add('hidden');
+        newImage1.classList.add('front-image', 'hidden', 'image');
         newImage1.setAttribute('id', id);
         newImage1.setAttribute('src', img);
         newImage1.setAttribute('alt', alt);
 
         const newImage2 = document.createElement('img');
-        newImage2.classList.add('back-image');
+        newImage2.classList.add('back-image', 'image');
         newImage2.setAttribute('src', adalabImage);
         newImage2.setAttribute('id', id);
 
