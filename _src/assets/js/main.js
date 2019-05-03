@@ -6,6 +6,7 @@ const option2 = document.querySelector('#option2');
 const option3 = document.querySelector('#option3');
 const button = document.querySelector('.btn');
 const resultsBox = document.querySelector('.results');
+const messagesBox = document.querySelector('.messages');
 const apiUrl = 'https://raw.githubusercontent.com/Adalab/cards-data/master/';
 const adalabImage = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
 let acc = 0;
@@ -24,12 +25,12 @@ const compareCards = (frontOfCard, backOfCard) => {
   const frontToCompare = cardToCompare.childNodes[0];
   const backToCompare = cardToCompare.childNodes[1];
   if (frontToCompare.id === frontOfCard.id) {
-    console.log(`It's a match!`);
+    messagesBox.innerHTML = `It's a match! Keep going!`;
     acc = 0;
     cardToCompare = '';
     return acc;
   } else {
-    console.log(`It's not a match :(`);
+    messagesBox.innerHTML = `Not a match :( Try again!`;
     setTimeout(function(){hideCards(frontToCompare, backToCompare, frontOfCard, backOfCard)}, 2000);
     acc = 0;
     cardToCompare = '';
@@ -121,6 +122,7 @@ const saveNumber = number => {
 
 //function to create the correct number of cards and save the value
 const getCards = () => {
+  messagesBox.innerHTML = '';
   if (option1.checked === true) {
     printCards(4);
     saveNumber(4);
@@ -134,7 +136,7 @@ const getCards = () => {
     saveNumber(8);
   }
   else {
-    console.log('No number chosen');
+    messagesBox.innerHTML = 'Please pick the number of cards';
   }
 };
 
