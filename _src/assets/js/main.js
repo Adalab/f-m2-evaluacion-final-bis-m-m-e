@@ -11,6 +11,7 @@ const apiUrl = 'https://raw.githubusercontent.com/Adalab/cards-data/master/';
 const adalabImage = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
 let acc = 0;
 let cardToCompare;
+const pairsFound = [];
 
 //function to hide cards again when flipped
 const hideCards = (front, back, front2, back2) => {
@@ -24,11 +25,18 @@ const hideCards = (front, back, front2, back2) => {
 const compareCards = (frontOfCard, backOfCard) => {
   const frontToCompare = cardToCompare.childNodes[0];
   const backToCompare = cardToCompare.childNodes[1];
+  const cards = document.querySelectorAll('.card');
   if (frontToCompare.id === frontOfCard.id) {
-    messagesBox.innerHTML = `It's a match! Keep going!`;
-    acc = 0;
-    cardToCompare = '';
-    return acc;
+    if (pairsFound.length < cards.length-2) {
+      messagesBox.innerHTML = `It's a match! Keep going!`;
+      acc = 0;
+      cardToCompare = '';
+      pairsFound.push(frontToCompare);
+      pairsFound.push(frontOfCard);
+      return acc;
+    } else {
+      messagesBox.innerHTML = `You win!`;
+    }
   } else {
     messagesBox.innerHTML = `Not a match :( Try again!`;
     setTimeout(function(){hideCards(frontToCompare, backToCompare, frontOfCard, backOfCard)}, 2000);
