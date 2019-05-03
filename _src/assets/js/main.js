@@ -11,6 +11,14 @@ const adalabImage = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADA
 let acc = 0;
 let cardToCompare;
 
+//function to hide cards again when flipped
+const hideCards = (front, back, front2, back2) => {
+  front.classList.toggle('hidden');
+  back.classList.toggle('hidden');
+  front2.classList.toggle('hidden');
+  back2.classList.toggle('hidden');
+};
+
 //function to compare cards when flipped
 const compareCards = (frontOfCard, backOfCard) => {
   const frontToCompare = cardToCompare.childNodes[0];
@@ -22,11 +30,7 @@ const compareCards = (frontOfCard, backOfCard) => {
     return acc;
   } else {
     console.log(`It's not a match :(`);
-    frontToCompare.classList.toggle('hidden');
-    backToCompare.classList.toggle('hidden');
-    frontOfCard.classList.toggle('hidden');
-    backOfCard.classList.toggle('hidden');
-
+    setTimeout(function(){hideCards(frontToCompare, backToCompare, frontOfCard, backOfCard)}, 2000);
     acc = 0;
     cardToCompare = '';
     return acc;
