@@ -14,9 +14,16 @@ body {
   align-items: center;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .options-list {
   list-style: none;
   display: flex;
+  padding: 0;
 }
 
 .btn {
@@ -25,10 +32,24 @@ body {
   background: lightseagreen;
 }
 
-.card-list {
+.card-list.number4{
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.card-list.number6{
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.card-list.number8{
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 }
 

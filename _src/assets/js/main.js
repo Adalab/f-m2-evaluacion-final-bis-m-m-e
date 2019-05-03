@@ -65,7 +65,7 @@ const addCardListener = () => {
 const printCards = number => {
   resultsBox.innerHTML = '';
   const newCardList = document.createElement('ul');
-  newCardList.classList.add('card-list');
+  newCardList.classList.add('card-list', `number${number}`);
   const url = `${apiUrl}${number}.json`;
   fetch(url)
     .then(response => response.json())
